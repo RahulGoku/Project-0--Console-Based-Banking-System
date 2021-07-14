@@ -1,0 +1,47 @@
+                                           Project - 0: Console Application on Banking
+                                 -----------------------------------------------------------------
+-Decide your Product name or Bank name
+-Console based- Menu Driven Application
+-Many Customer and only 1 Employee
+-1 Employy  you can Persume he is already part of the System which means you don't have to register him.
+-No PPT,Just Introduce and Describe our Application
+
+                                               Welcome Screen Look:
+                                           ------------------------------------
+
+Welcome To Developername's banking app
+-----------------------------------------------------
+ Menu:
+ ----------
+1]Login
+2]Register as Customer
+3]Exit
+
+Enter Your Choice : 1
+
+1)Login as Customer
+2)Login as Employee
+3)Main Menu
+4) Exit
+
+Enter Your Choice : 1
+
+Welcome to Customer Login Screen
+------------------------------------------
+Enter Username :  xxxyyyqqq
+Enter Password  :  123456789
+
+Login Successful
+
+Welcome Customer'sName
+---------------------------------
+1]Open Account
+2]Transfer
+3]Withdraw
+4]Deposit
+5]View Statement or Transactions
+6]Logout
+
+Enter Your Choice :
+
+
