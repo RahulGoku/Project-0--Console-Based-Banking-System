@@ -1,6 +1,9 @@
 package com.project0.model;
 
-public class Project {
+
+
+
+public class Project  {
 	private int customerId;
 	private String name;
 	private int contactNumber;
@@ -11,17 +14,21 @@ public class Project {
 	private String panNumber;
 	private String password;
 	private int  transactionId;
+
 	
 	
+	
+	
+	
+
 	public Project() {
 		super();
 		
 	}
 
-	public Project(int customerId, String name, int contactNumber, String emailId, String city, String state,
-			String country, String panNumber, String password, int transactionId) {
+	public Project(String name, int contactNumber, String emailId, String city, String state, String country,
+			String panNumber, String password) {
 		super();
-		this.customerId = customerId;
 		this.name = name;
 		this.contactNumber = contactNumber;
 		this.emailId = emailId;
@@ -30,8 +37,8 @@ public class Project {
 		this.country = country;
 		this.panNumber = panNumber;
 		this.password = password;
-		this.transactionId = transactionId;
 	}
+
 
 	public int getCustomerId() {
 		return customerId;
@@ -112,6 +119,9 @@ public class Project {
 	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
 	}
+	
+	
+
 
 	@Override
 	public String toString() {
@@ -119,6 +129,7 @@ public class Project {
 				+ ", emailId=" + emailId + ", city=" + city + ", state=" + state + ", country=" + country
 				+ ", panNumber=" + panNumber + ", password=" + password + ", transactionId=" + transactionId + "]";
 	}
+
 	
 	
 	
