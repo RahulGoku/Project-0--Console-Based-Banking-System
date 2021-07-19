@@ -19,7 +19,7 @@ public class ProjectMain {
 		Scanner sc = new Scanner(System.in);
 		int ch = 0;
 		do {
-			log.info("Welcome to BankingApp V1.0");
+			log.info("Welcome to RahulGoku V1.0");
 			log.info("==================================");
 			log.info("Select the Option :");
 			log.info("==================================");
@@ -51,7 +51,7 @@ public class ProjectMain {
 					}
 					switch (s) {
 					case 1:
-						int c = 0;
+						int c=0;
 						String str = null;
 						log.info("Customer Login Screen : ");
 						log.info(
@@ -69,6 +69,7 @@ public class ProjectMain {
 									pass = projectDAO.getCustomerByPassword(Password);
 									if (pass != null) {
 										System.out.println("Login Successfully \n ");
+										log.info("Hello "+projectDAO.getCustomerByName(LoginId)+", Welcome to the RahulGoku Bank");
 										do {
 											log.info("1)Transfer       : ");
 											log.info("2)Withdraw       : ");
@@ -77,19 +78,20 @@ public class ProjectMain {
 											log.info("5)Exit: ");
 											log.info("Enter your Choice 1-5");
 											log.info("Choose the Menu : ");
+											
+											c=sc.nextInt();
 
-											try {
-												c = Integer.parseInt(sc.nextLine());
-											} catch (NumberFormatException e) {
-
-											}
 											switch (c) {
 											case 1:
+											
 												log.info("Transfer : ");
 												log.info("---------------------------------------------------------------------------------------\n");
 												int id1 = projectDAO.getCustomerByCustomerId(LoginId);
+												sc.nextLine();
 												log.info("Enter the Other user Id : ");
+											    
 												String loginIdother=sc.nextLine();
+											   
 												if (projectDAO.getCheckForAccount(id1) == false)
 													log.info("You don't have an Account");
 												else {
@@ -98,16 +100,14 @@ public class ProjectMain {
 													log.info("Enter Amount to Transfer : \n");
 													float amount = sc.nextFloat();
 													float total = projectDAO.getTransactionTotalAmount(id1);
-													if (amount > total)log.info("Low amount");
+													if (amount > total && amount>=0)log.info("Low amount");
 													else {
-	
 														int id7 = projectDAO.getCustomerByCustomerId(loginIdother);
 														if (projectDAO.getCheckForAccount(id7) == false)
 															log.info("You don't have an Account");
 														else {
 															log.info("Credit Money :");
-															log.info(
-																	"---------------------------------------------------------------------------------------\n");
+															log.info("---------------------------------------------------------------------------------------\n");
 															float total1= projectDAO.getTransactionTotalAmount(id7);
 
 															Transaction transaction = new Transaction(0f, 0f, amount,
@@ -117,6 +117,7 @@ public class ProjectMain {
 																System.out.println("Account with id " + id7
 																		+ " details after transfer are : ");
 																System.out.println(transaction);
+																
 															}
 
 														}
@@ -124,24 +125,23 @@ public class ProjectMain {
 													}
 
 												}
-
 												break;
 											case 2:
+											
 												log.info("Withdraw ");
-												log.info(
-														"---------------------------------------------------------------------------------------\n");
+												log.info("---------------------------------------------------------------------------------------\n");
 												int id3 = projectDAO.getCustomerByCustomerId(LoginId);
-												if (projectDAO.getCheckForAccount(id3) == false)
+												if (projectDAO.getCheckForAccount(id3) == false) {
 													log.info("You don't have an Account");
+												}
 												else {
 													log.info("Debit Money :");
-													log.info(
-															"---------------------------------------------------------------------------------------\n");
+													log.info("---------------------------------------------------------------------------------------\n");
 													log.info("Enter Amount to withdraw : \n");
 													float amount = sc.nextFloat();
 													float total = projectDAO.getTransactionTotalAmount(id3);
-													if (amount > total)
-														log.info("less Amount");
+													if (amount > total && amount>=0)log.info("less Amount");
+													else {
 													Transaction transaction = new Transaction(0f, amount, 0f,
 															total - amount, id3);
 													if (transaction != null) {
@@ -149,14 +149,17 @@ public class ProjectMain {
 														System.out.println("Account with id " + id3
 																+ " details after deposit are : ");
 														System.out.println(transaction);
+														
+													}
+
 													}
 
 												}
 												break;
 											case 3:
+											
 												log.info("Deposit");
-												log.info(
-														"---------------------------------------------------------------------------------------\n");
+												log.info("---------------------------------------------------------------------------------------\n");
 												int id2 = projectDAO.getCustomerByCustomerId(LoginId);
 												if (projectDAO.getCheckForAccount(id2) == false)
 													log.info("You don't have an Account");
@@ -175,6 +178,7 @@ public class ProjectMain {
 														System.out.println("Account with id " + id2
 																+ " details after deposit are : ");
 														System.out.println(transaction);
+														
 													}
 
 												}
@@ -196,6 +200,7 @@ public class ProjectMain {
 															for (Transaction transaction : transactionList) {
 																System.out.println(transaction);
 															}
+															
 														}
 													} catch (BankingException e) {
 														System.out.println(e.getMessage());
@@ -242,26 +247,20 @@ public class ProjectMain {
 									if (pass != null) {
 										System.out.println("Login Successfully,Welcome Employee");
 										do {
-											log.info("1)Open Account    : ");
-											//log.info("2)Update Record   : ");
-										//	log.info("3)Read Details    : ");
-										//	log.info("4)Delete Account  : ");
-											log.info("2)Main Menu       : ");
-											log.info("3)Exit            : ");
-											log.info("Enter your Choice 1-3");
+											log.info("1)Open Account                 : ");
+											log.info("2)Read  Transaction Details    : ");
+											log.info("3)Main Menu                    : ");
+											log.info("4)Exit                         : ");
+											log.info("Enter your Choice 1-4");
 											log.info("Choose the Menu : ");
 
-											try {
-												e = Integer.parseInt(sc.nextLine());
-											} catch (NumberFormatException n) {
-
-											}
+											e=sc.nextInt();
 											switch (e) {
 											case 1:
 												log.info("Open Account : ");
-												log.info(
-														"---------------------------------------------------------------------------------------");
+												log.info("---------------------------------------------------------------------------------------");
 												log.info("Enter Customer Login Id : \n");
+												sc.nextLine();
 												String empLoginId1 = sc.nextLine();
 												int id = projectDAO.getCustomerByCustomerId(empLoginId1);
 												if (projectDAO.getCheckForAccount(id) == true)
@@ -287,32 +286,46 @@ public class ProjectMain {
 													}
 												}
 												break;
-//											case 2:
-//												log.info("Update Record : ");
-//												log.info("---------------------------------------------------------------------------------------");
-//
-//												break;
-//											case 3:
-//												log.info("Read Account details: ");
-//												log.info(	"---------------------------------------------------------------------------------------");
-//
-//												break;
-//											case 4:
-//												log.info("Delete Account  :");
-//												log.info(
-//														"---------------------------------------------------------------------------------------");
-//												break;
+										
 											case 2:
+												log.info("View Transaction  details: ");
+												log.info(	"---------------------------------------------------------------------------------------");
+												log.info("Enter the Customer ID : ");
+												sc.nextLine();
+												String ld=sc.nextLine();
+												int id5 = projectDAO.getCustomerByCustomerId(ld);
+												if (projectDAO.getCheckForAccount(id5) == false)
+													log.info("You don't have an Account");
+												else {
+													List<Transaction> transactionList = null;
+													try {
+														transactionList = projectDAO.getViewStatement(id5);
+														if (transactionList != null && transactionList.size() > 0) {
+															System.out.println("We have " + transactionList.size()
+																	+ " no of product/s in DB details are");
+															for (Transaction transaction : transactionList) {
+																System.out.println(transaction);
+															}
+															
+														}
+													} catch (BankingException e1) {
+														System.out.println(e1.getMessage());
+													}
+
+												}
+
+												break;
+											case 3:
 												log.info("Main Menu :");
 												log.info("---------------------------------------------------------------------------------------");
 												break;
-											case 3:
+											case 4:
 												log.info("Exit   :");
 												log.info(
 														"---------------------------------------------------------------------------------------");
 												break;
 											default:
-												log.warn("Invalid Choice... Please enter input between 1-3");
+												log.warn("Invalid Choice... Please enter input between 1-4");
 												break;
 											}
 										} while (e != 3);
@@ -341,7 +354,7 @@ public class ProjectMain {
 				} while (s != 4);
 				break;
 			case 2:
-				log.info("Register :\n\n)");
+				log.info("Register :\n\n");
 				log.info("Enter Name :)");
 				String name = sc.nextLine();
 				log.info("Enter Contact Number :)");

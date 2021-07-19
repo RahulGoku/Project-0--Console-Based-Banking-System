@@ -16,19 +16,16 @@ public interface ProjectDAO {
 	public String getEmployeeByEmailId(String userEmail) throws BankingException;
 
 	public String getEmployeeByPassword(String userPassword) throws BankingException;
+	
+	public String getCustomerByName(String useeEmail) throws BankingException;
+
+	
 
 	public Transaction openAccount(Transaction transaction) throws BankingException;
 
 	public void updateCustomerId(int userId, int transactionId) throws BankingException;
 	
-//	public void updateTransactionCredit(int accountId, int credit) throws BankingException;
-//	
-//	public void updateTransactionDebit(int accountId, int Debit) throws BankingException;
-//
-//	public void updateTransactionTransfer(int accountId, int Transfer) throws BankingException;
-// 
-//	public void updateTotalAmount(int accountId, int totalamount) throws BankingException;
-//   
+
     public float getTransactionCredit(int accountId) throws BankingException;
 	
 	public float getTransactionDebit(int accountId) throws BankingException;
@@ -37,14 +34,8 @@ public interface ProjectDAO {
 	
 	public float getTransactionTotalAmount(int accountId) throws BankingException;
 	
-	public float setTransactionCredit(int accountId) throws BankingException;
-
-	public float setTransactionDebit(int accountId) throws BankingException;
-
-	public void setTransactionTransfer(int accountId) throws BankingException;
- 
-	//public void getTotalAmount(int accountId) throws BankingException;
-
+	
+	
 
 	public List<Transaction> getViewStatement(int accountId)throws BankingException;
 	

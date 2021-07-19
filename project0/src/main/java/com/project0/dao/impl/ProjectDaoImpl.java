@@ -328,21 +328,7 @@ public class ProjectDaoImpl implements ProjectDAO {
 		return tf;
 		
 	}
-	@Override
-	public float setTransactionCredit(int accountId) throws BankingException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public float setTransactionDebit(int accountId) throws BankingException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public void setTransactionTransfer(int accountId) throws BankingException {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	@Override
 	public float getTransactionTotalAmount(int accountId) throws BankingException {
 		float ta=0;
@@ -389,6 +375,25 @@ public class ProjectDaoImpl implements ProjectDAO {
 		}
 		
 		return transactionList;
+	}
+	@Override
+	public String getCustomerByName(String userEmail) throws BankingException {
+		String string=null;
+		try (Connection connection = PostgresConnection.getConnection()) {
+			String sql  = "select customer_name from project0.customer where email_id=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1,userEmail);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				string+=resultSet.getString("customer_name");
+			} else {
+				throw new BankingException("Invalid Account " + userEmail);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			log.error(e);
+			throw new BankingException("Internal error occured... Kindly conatct SYSADMIN........");
+		}
+		return string;
 	}
 	
 	

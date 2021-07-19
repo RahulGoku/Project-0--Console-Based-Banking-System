@@ -11,9 +11,10 @@
 <fullyQualifiedTypeName name="java.util.logging.Logger"/>
 <fullyQualifiedTypeName name="com.project0.model.Project"/>
 <fullyQualifiedTypeName name="com.project0.exception.BankingException"/>
-<fullyQualifiedTypeName name="com.project0.dao.impl.ProjectDaoImpl"/>
 <fullyQualifiedTypeName name="com.project0.dao.ProjectDAO"/>
 <fullyQualifiedTypeName name="com.project0.model.Transaction"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeAll"/>
+<fullyQualifiedTypeName name="com.project0.dao.impl.ProjectDaoImpl"/>
 </qualifiedTypeNameHistroy>
